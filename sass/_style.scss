@@ -149,7 +149,6 @@ img {
 
     @media only screen and (max-width: $bp-medium) {
         padding: 3rem 6rem;
-
     }
 
 
@@ -210,7 +209,7 @@ img {
     transition: all 0.3s;
 
     @media only screen and (max-width: $bp-small) {
-        height: 3rem;
+        height: 3.5rem;
         left: 2rem;
         position: absolute;
     }
@@ -304,18 +303,20 @@ img {
 }
 
 .fa-bars {
-
+    position: absolute;
     visibility: hidden;
     font-size: 5rem;
     z-index: 1000;
 
-    @media only screen and (max-width: $bp-medium) {
-        visibility: visible;
-        right: 2rem;
-    }
 
     @media only screen and (max-width: $bp-medium) {
-        font-size: 3.5rem;
+        visibility: visible;
+        right: 7rem;
+    }
+
+    @media only screen and (max-width: $bp-small) {
+        font-size: 2.5rem;
+        right: 5rem;
     }
 
 
@@ -335,24 +336,24 @@ img {
     width: 5rem;
     background: #434343;
     border-radius: 50%;
-    position: fixed;
-    top: 10rem;
-    right: 8rem;
+    position: absolute;
     cursor: pointer;
     display: flex;
     justify-content: center;
     align-items: center;
     z-index: 100;
+    right: 0;
 
 
-    @media only screen and (max-width: $bp-small) {
-        right: 4rem;
+    @media only screen and (max-width: $bp-medium) {
+        height: 4rem;
+        width: 4rem;
+        right: 2rem;
     }
 
     @media only screen and (max-width: $bp-small) {
         height: 3rem;
         width: 3rem;
-        right: 2rem;
     }
 
 
@@ -365,17 +366,17 @@ img {
 }
 
 .fas {
-    position: absolute;
     font-size: 3rem;
     transition: all 0.3s;
 
     @media only screen and (max-width: $bp-small) {
-        font-size: 1.5rem;
+        font-size: 2.5rem;
     }
 }
 
 .fa-moon,
 .fa-sun {
+    position: absolute;
     color: #ffffff;
 
 }
@@ -728,9 +729,8 @@ h4 {
     align-items: center;
     justify-content: center;
     position: absolute;
-    top: 50%;
     z-index: 10;
-
+    top: 50%;
     border: none;
     background: rgba(255, 255, 255, 0.7);
     font-family: inherit;
@@ -855,6 +855,7 @@ h4 {
 
     @media only screen and (max-width: $bp-small) {
         margin-left: 0;
+        column-gap: 0;
     }
 }
 

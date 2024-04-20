@@ -37,6 +37,7 @@ const toggleTheme = function () {
   document.querySelector('.fa-sun').classList.toggle('hidden');
   document.querySelector('.operations').classList.toggle('light');
   document.querySelector('.fa-bars').classList.toggle('light');
+  document.querySelector('.nav__menu--list').classList.toggle('light');
 
   if (body.classList.contains('light')) {
     navLogo.setAttribute('src', 'img/logo.png');
