@@ -12,6 +12,7 @@
     "disown-opener": "off",
     "compat-api/css": "off",
     "button-type": "off",
-    "compat-api/html": "off"
+    "compat-api/html": "off",
+    "axe/name-role-value": "off"
   }
 }

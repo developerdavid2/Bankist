@@ -10,6 +10,7 @@ const body = document.querySelector('body');
 const btnCloseModal = document.querySelector('.btn--close-modal');
 const btnsOpenModal = document.querySelectorAll('.btn--show-modal');
 const btnScrollTo = document.querySelector('.btn--scroll-to');
+const backToTop = document.querySelector('.back-to-top');
 
 const header = document.querySelector('.header');
 const section1 = document.querySelector('#section--1');
@@ -17,6 +18,7 @@ const allSections = document.querySelectorAll('.section');
 
 const nav = document.querySelector('.nav');
 const navLogo = document.querySelector('.nav__logo');
+const navLink = document.querySelector('.nav__link');
 const navLinks = document.querySelector('.nav__links');
 const navMenu = document.querySelector('.nav__menu--list');
 
@@ -36,7 +38,7 @@ const toggleTheme = function () {
   document.querySelector('.fa-moon').classList.toggle('hidden');
   document.querySelector('.fa-sun').classList.toggle('hidden');
   document.querySelector('.operations').classList.toggle('light');
-  document.querySelector('.fa-bars').classList.toggle('light');
+  document.querySelector('.fa-bars').classList.toggle('toggler-light');
   document.querySelector('.nav__menu--list').classList.toggle('light');
 
   if (body.classList.contains('light')) {
@@ -129,6 +131,12 @@ navLinks.addEventListener('click', function (e) {
   }
 });
 
+//BACK TO TOP BUTTON
+backToTop.addEventListener('click', function (e) {
+  e.preventDefault();
+  document.querySelector('.header').scrollIntoView({ behavior: 'smooth' });
+});
+
 //ACTIVATIONG THE TABBED COMPONENTS
 tabContainer.addEventListener('click', function (e) {
   const clicked = e.target.closest('.operations__tab');
@@ -169,13 +177,16 @@ const stickyNav = function (entries) {
   if (!entry.isIntersecting && !body.classList.contains('light')) {
     nav.classList.add('sticky');
     nav.classList.remove('sticky-light');
+    backToTop.classList.remove('hidden');
   } else {
     nav.classList.remove('sticky');
+    backToTop.classList.add('hidden');
   }
 
   if (!entry.isIntersecting && body.classList.contains('light')) {
     nav.classList.add('sticky-light');
     nav.classList.remove('sticky');
+    backToTop.classList.remove('hidden');
   } else {
     nav.classList.remove('sticky-light');
   }

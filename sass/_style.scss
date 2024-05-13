@@ -191,17 +191,50 @@ img {
 /* nav and stickly class at the same time */
 .nav.sticky {
     position: fixed;
-    background-color: #2222228e;
     backdrop-filter: blur(1rem);
     transition: all 0.3s;
+
+}
+
+
+@-webkit-keyframes fadeInDown {
+    from {
+        opacity: 0;
+        -webkit-transform: translate3d(0, -100%, 0);
+        transform: translate3d(0, -100%, 0);
+    }
+
+    to {
+        opacity: 1;
+        -webkit-transform: translate3d(0, 0, 0);
+        transform: translate3d(0, 0, 0);
+    }
+}
+
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        -webkit-transform: translate3d(0, -100%, 0);
+        transform: translate3d(0, -100%, 0);
+    }
+
+    to {
+        opacity: 1;
+        -webkit-transform: translate3d(0, 0, 0);
+        transform: translate3d(0, 0, 0);
+    }
 }
 
 .nav.sticky-light {
     position: fixed;
-    color: #444;
-    background-color: #ffffff80;
     backdrop-filter: blur(1rem);
     transition: all 0.3s;
+}
+
+.nav.sticky,
+.nav.sticky-light {
+    -webkit-animation: fadeInDown 0.5s;
+    animation: fadeInDown 0.5s;
 }
 
 .nav__logo {
@@ -261,16 +294,15 @@ img {
     transition: all 0.3s;
 
     @media only screen and (max-width: $bp-medium) {
-
         display: inline-block;
         font-size: 3rem;
         font-weight: 300;
         text-decoration: none;
         padding: 1rem 2rem;
-        background-image: linear-gradient(120deg, transparent 0%, transparent 50%, rgb(27, 27, 27) 50%);
         background-size: 230%;
         border-radius: 2rem;
         transition: all .5s;
+        background-image: linear-gradient(120deg, transparent 0%, transparent 50%, rgb(133 133 133 / 15%) 50%)
     }
 
     @media only screen and (max-width: $bp-small) {
@@ -281,8 +313,8 @@ img {
 .nav__link:hover,
 .nav__link:active {
     @media only screen and (max-width: $bp-medium) {
-        background-position: 100%;
         transform: translateX(1rem);
+        background-position: 100%;
     }
 }
 
@@ -292,14 +324,19 @@ img {
     padding: 0.8rem 2.5rem;
     border-radius: 3rem;
     background-color: var(--color-primary);
-    color: #222;
 }
 
 .nav__link--btn:hover,
 .nav__link--btn:active {
     color: inherit;
     background-color: var(--color-primary-darker);
-    color: #333;
+
+}
+
+.btn--show-modal:hover {
+    @media only screen and (max-width: $bp-medium) {
+        background-position: 0%;
+    }
 }
 
 .fa-bars {
@@ -348,7 +385,7 @@ img {
     @media only screen and (max-width: $bp-medium) {
         height: 4rem;
         width: 4rem;
-        right: 2rem;
+        right: 1rem;
     }
 
     @media only screen and (max-width: $bp-small) {
@@ -363,6 +400,10 @@ img {
     color: #444;
     background: #f3f3f3 !important;
     box-shadow: 0 2rem 5rem #7777773f !important;
+}
+
+.toggler-light {
+    color: #444;
 }
 
 .fas {
@@ -690,10 +731,24 @@ h4 {
 
 /* SLIDER */
 .slider {
+    cursor: pointer;
     max-width: 100rem;
     height: 50rem;
     margin: 0 auto;
     position: relative;
+
+    @media only screen and (min-width: $bp-medium) {
+        &:hover &__btn--right {
+            right: 6%;
+        }
+
+        &:hover &__btn--left {
+            left: 6%;
+        }
+    }
+
+
+
 
     /* IN THE END */
     overflow: hidden;
@@ -732,17 +787,26 @@ h4 {
     z-index: 10;
     top: 50%;
     border: none;
-    background: rgba(255, 255, 255, 0.7);
+    background: rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(5px);
     font-family: inherit;
-    color: #333;
+    color: #fff;
     border-radius: 50%;
     height: 5.5rem;
     width: 5.5rem;
-    font-size: 3.25rem;
     cursor: pointer;
 
+
+    .fa-chevron-right,
+    .fa-chevron-left {
+        font-size: 2.2rem;
+
+        @media only screen and (max-width: $bp-small) {
+            font-size: 1.5rem;
+        }
+    }
+
     @media only screen and (max-width: $bp-small) {
-        font-size: 1.7rem;
         height: 3rem;
         width: 3rem;
         top: 95%;
@@ -750,26 +814,32 @@ h4 {
 }
 
 .slider__btn--left {
-    left: 6%;
+    left: -6%;
     transform: translate(-50%, -50%);
+    transition: .3s ease-in-out;
 
     @media only screen and (max-width: $bp-small) {
         left: 44.5%;
+        transition: none;
 
     }
 }
 
 .slider__btn--right {
-    right: 6%;
+    right: -6%;
     transform: translate(50%, -50%);
+    transition: .3s ease-in-out;
 
     @media only screen and (max-width: $bp-small) {
         right: 44.5%;
+        transition: none;
 
     }
 }
 
-.dots {
+
+
+.slider .dots {
     position: absolute;
     bottom: 5%;
     left: 50%;
@@ -840,7 +910,7 @@ h4 {
     color: #666;
 
     @media only screen and (max-width: $bp-small) {
-        font-size: 1rem;
+        font-size: 1.4rem;
         margin-bottom: 2rem;
     }
 }
@@ -882,6 +952,33 @@ h4 {
 
 .section__title--testimonials {
     margin-bottom: 4rem;
+}
+
+/*OUR PARTNERS*/
+.companies {
+    display: grid;
+    grid-template-columns: repeat(5, minmax(min-content, 10rem));
+    grid-template-rows: max-content;
+    justify-items: center;
+    justify-content: center;
+
+    @media only screen and (max-width: $bp-medium) {
+        overflow-x: scroll;
+    }
+
+    .company__container {
+        padding: 2rem;
+    }
+
+
+    .company__logo {
+        height: 4rem;
+        filter: grayscale(100);
+
+        &:hover {
+            filter: none;
+        }
+    }
 }
 
 /* SIGNUP */
@@ -1059,6 +1156,26 @@ h4 {
     visibility: hidden;
     opacity: 0;
 }
+
+
+.back-to-top {
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 1rem;
+    height: 5rem;
+    width: 5rem;
+    font-size: 2rem;
+    color: var(--color-primary);
+    background-color: var(--color-primary-opacity);
+    position: fixed;
+    right: 3rem;
+    bottom: 5rem;
+    transform: translateY(50%);
+    transition: all 0.3s ease-in-out;
+}
+
 
 /* COOKIE MESSAGE */
 .cookie-message {
