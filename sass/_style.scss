@@ -955,30 +955,76 @@ h4 {
 }
 
 /*OUR PARTNERS*/
+
 .companies {
-    display: grid;
-    grid-template-columns: repeat(5, minmax(min-content, 10rem));
-    grid-template-rows: max-content;
-    justify-items: center;
-    justify-content: center;
-
-    @media only screen and (max-width: $bp-medium) {
-        overflow-x: scroll;
-    }
-
-    .company__container {
-        padding: 2rem;
-    }
-
+    position: relative;
 
     .company__logo {
+        cursor: pointer;
         height: 4rem;
-        filter: grayscale(100);
+        filter: grayscale(100%); // Use a variable
 
         &:hover {
             filter: none;
         }
     }
+}
+
+.carousel-primary,
+.carousel-secondary {
+    top: 0%;
+    left: 100%;
+    width: 100%;
+    overflow: hidden;
+    position: absolute;
+    white-space: nowrap;
+}
+
+.carousel-primary {
+    display: flex;
+    justify-content: space-around;
+    animation: scroll-horizontal 20s linear infinite;
+}
+
+.carousel-secondary {
+    animation: scroll-horizontal 20s linear infinite;
+    animation-delay: 10s;
+}
+
+
+@keyframes scroll-horizontal {
+    0% {
+        left: 100%
+    }
+
+
+    100% {
+        left: -100%
+    }
+}
+
+
+.carousel-primary:hover,
+.carousel-primary:hover~.carousel-secondary {
+    -webkit-animation-play-state: paused;
+    -moz-animation-play-state: paused;
+    -o-animation-play-state: paused;
+    animation-play-state: paused;
+}
+
+.carousel-secondary:hover {
+    -webkit-animation-play-state: paused;
+    -moz-animation-play-state: paused;
+    -o-animation-play-state: paused;
+    animation-play-state: paused;
+}
+
+
+.scroll-container:hover>.carousel-primary:not(:hover) {
+    -webkit-animation-play-state: paused;
+    -moz-animation-play-state: paused;
+    -o-animation-play-state: paused;
+    animation-play-state: paused;
 }
 
 /* SIGNUP */
