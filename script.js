@@ -43,7 +43,19 @@ const toggleTheme = function () {
 
   if (body.classList.contains('light')) {
     navLogo.setAttribute('src', 'img/logo.png');
-  } else navLogo.setAttribute('src', 'img/logo-light.png');
+    document
+      .querySelectorAll('.company__logo--6')
+      .forEach(company6 =>
+        company6.setAttribute('src', 'img/companies/company-6-light.png')
+      );
+  } else {
+    document
+      .querySelectorAll('.company__logo--6')
+      .forEach(company6 =>
+        company6.setAttribute('src', 'img/companies/company-6.png')
+      );
+    navLogo.setAttribute('src', 'img/logo-light.png');
+  }
 };
 themeToggler.addEventListener('click', toggleTheme);
 

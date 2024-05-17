@@ -220,6 +220,7 @@ img {
 
 .nav.sticky,
 .nav.sticky-light {
+  box-shadow: 0 -1rem 3rem rgba(0, 0, 0, 0.5);
   -webkit-animation: fadeInDown 0.5s;
   animation: fadeInDown 0.5s;
 }
@@ -937,63 +938,63 @@ h4 {
 }
 
 /*OUR PARTNERS*/
+#section--4 {
+  overflow: hidden;
+}
+
+/* number of images*/
 .companies {
-  position: relative;
+  text-align: center;
+  width: 100%;
+  display: inline-flex;
+  flex-wrap: nowrap;
+  overflow: hidden;
+  -webkit-mask: linear-gradient(to right, transparent 0, black 128px, black calc(100% - 128px), transparent 100%);
+  mask: linear-gradient(to right, transparent 0, black 128px, black calc(100% - 128px), transparent 100%);
 }
 .companies .company__logo {
   cursor: pointer;
-  height: 4rem;
   filter: grayscale(100%);
+  transition: all 0.3s ease-in-out;
+  max-width: none;
+  height: 4rem;
 }
 .companies .company__logo:hover {
   filter: none;
 }
 
-.carousel-primary,
-.carousel-secondary {
-  top: 0%;
-  left: 100%;
-  width: 100%;
-  overflow: hidden;
-  position: absolute;
-  white-space: nowrap;
-}
-
 .carousel-primary {
   display: flex;
-  justify-content: space-around;
-  animation: scroll-horizontal 20s linear infinite;
+  align-items: center;
+  justify-content: flex-start;
+  list-style: none;
+  animation: scroll-horizontal 25s linear infinite;
 }
-
-.carousel-secondary {
-  animation: scroll-horizontal 20s linear infinite;
-  animation-delay: 10s;
+.carousel-primary li {
+  margin: 0 2rem;
+}
+@media only screen and (max-content: 57.5em) {
+  .carousel-primary {
+    justify-content: center;
+  }
 }
 
 @keyframes scroll-horizontal {
-  0% {
-    left: 100%;
+  from {
+    transform: translateX(0%);
   }
-  100% {
-    left: -100%;
+  to {
+    transform: translateX(-100%);
   }
 }
-.carousel-primary:hover,
-.carousel-primary:hover ~ .carousel-secondary {
+.carousel-primary:hover {
   -webkit-animation-play-state: paused;
   -moz-animation-play-state: paused;
   -o-animation-play-state: paused;
   animation-play-state: paused;
 }
 
-.carousel-secondary:hover {
-  -webkit-animation-play-state: paused;
-  -moz-animation-play-state: paused;
-  -o-animation-play-state: paused;
-  animation-play-state: paused;
-}
-
-.scroll-container:hover > .carousel-primary:not(:hover) {
+.companies:hover > .carousel-primary:not(:hover) {
   -webkit-animation-play-state: paused;
   -moz-animation-play-state: paused;
   -o-animation-play-state: paused;
